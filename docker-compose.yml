@@ -6,22 +6,22 @@ services:
       context: ./node
     image: adrianofelisberto/nodeapp
     container_name: nodeapp
-    volumes:
-      - ./node/:/usr/src/app
-    ports:
-      - 8080:3000
     networks:
       - desafio-node
+    depends_on:
+      - mysql
       
-  # nginx:
-  #   build: 
-  #     context: ./nginx
-  #   image: adrianofelisberto/nginx
-  #   container_name: nginx
-  #   networks: 
-  #     - desafio-node
-  #   ports: 
-  #     - 8080:80
+  nginx:
+    build: 
+      context: ./nginx
+    image: adrianofelisberto/nginx
+    container_name: nginx
+    networks: 
+      - desafio-node
+    ports: 
+      - 8080:80
+    depends_on:
+      - node
 
   mysql:
     image: mysql:5.7

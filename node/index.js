@@ -18,14 +18,18 @@ app.get('/', (req, res) => {
 
     const sql = `INSERT INTO people(name) values ("Adriano")`
     
+    console.log(sql)
+
     connection.query(sql)
 
 
     const querySelect = "SELECT * FROM people"
 
+    console.log(querySelect)
+
     let stringResponse = `
     
-        <p>&lt;h1&gt;Full Cycle Rocks!&lt;/h1&gt;</p>
+        <p>Full Cycle Rocks!</p>
         <p />
         <p>- Lista de nomes cadastrada no banco de dados.</p>
     `
@@ -34,19 +38,18 @@ app.get('/', (req, res) => {
         if (error) throw error;
 
         results.forEach(element => {
-            stringResponse.concat(
+            stringResponse = stringResponse.concat(
                 `
-                    <p>--- ${element.name} </p>
+                    <p>-- ${element.name} </p>
                 `
             )
         })
         
-        
+        res.send(stringResponse)
     })
-    
+
     connection.end()
     
-    res.send(stringResponse)
     
 
 })
