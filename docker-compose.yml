@@ -6,6 +6,7 @@ services:
       context: ./node
     image: adrianofelisberto/nodeapp
     container_name: nodeapp
+    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 10s node index.js
     networks:
       - desafio-node
     depends_on:
