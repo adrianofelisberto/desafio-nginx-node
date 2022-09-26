@@ -17,6 +17,7 @@ ___
 ## 🚀 Tecnologias Utilizadas
 - [Docker](https://www.docker.com)
 - [docker-compose](https://docs.docker.com/compose/)
+- [Dockerize](https://github.com/jwilder/dockerize)
 - [Node](https://nodejs.org/en/)
 - [MySql](https://www.mysql.com/)
 - [Nginx](https://nginx.org/en/)
